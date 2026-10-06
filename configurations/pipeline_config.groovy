@@ -1,11 +1,19 @@
 libraries {
     validacion_archivos {
-        host      = '10.20.30.40'
-        user      = 'svc_jenkins'      // usuario con el que entra por SSH
-        runAsUser = 'usr_datos'        // usuario al que se cambia para ver los archivos
-        ruta      = '/data/entrada'
-        archivos  = ['clientes.csv', 'ventas.csv', 'productos.csv']
-        nodo      = 'nodo-ssh'         // label del nodo que ya tiene el acceso SSH
+        host         = '10.20.30.40'
+        user         = 'svc_jenkins'
+        runAsUser    = 'usr_datos'
+        ruta         = '/data/entrada'
+        marcador     = 'XXXXXXX'            // texto que se reemplaza por la fecha
+        formatoFecha = '%Y%m%d'             // formato de `date`, ajústalo al de tus archivos
+        zonaHoraria  = 'America/Bogota'
+        archivos     = [
+            'REPORTE_BIENVENIDAS_XXXXXXX.csv',
+            'ARCHIVO_DOS_XXXXXXX.csv',
+            'ARCHIVO_TRES_XXXXXXX.csv',
+            'ARCHIVO_CUATRO_XXXXXXX.csv',
+            'ARCHIVO_CINCO_XXXXXXX.csv'
+        ]
     }
 }
 
