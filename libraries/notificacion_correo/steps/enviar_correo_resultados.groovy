@@ -1,11 +1,4 @@
 void call(List resultados) {
-    def hayErrores = resultados.any { it.estatus == 'ERROR' }
-
-    if (!hayErrores && config.soloSiHayErrores) {
-        echo "Todos los archivos están OK, no se envía correo"
-        return
-    }
-
     def fecha   = resultados ? resultados[0].fecha : ''
     def nombres = resultados.collect { it.archivo }.join(', ')
 
