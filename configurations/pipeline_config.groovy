@@ -6,6 +6,7 @@ libraries {
         ruta         = '/data/entrada'
         formatoFecha = '%Y%m%d'             // formato de la fecha en el nombre del archivo
         zonaHoraria  = 'America/Bogota'
+        estadoSiFaltan = 'SUCCESS'      // SUCCESS (verde), UNSTABLE (amarillo) o FAILURE (rojo)
         archivos     = [
             'REPORTE_BIENVENIDAS_{fecha}.csv',
             'ARCHIVO_DOS_{fecha}.csv',
