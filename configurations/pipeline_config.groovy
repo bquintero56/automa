@@ -8,7 +8,12 @@ libraries {
         nodo      = 'nodo-ssh'         // label del nodo que ya tiene el acceso SSH
     }
 }
-
+notificacion_correo {
+    destinatarios    = 'persona1@empresa.com,persona2@empresa.com'
+    asuntoPrefijo    = 'Monitoreo activo Seguimiento'
+    asuntoSufijo     = '360'
+    soloSiHayErrores = true
+}
 jte{
     allow_scm_jenkinsfile= false
     pipeline_template = 'automation-pipelines/autIN/autIN_template.groovy'
