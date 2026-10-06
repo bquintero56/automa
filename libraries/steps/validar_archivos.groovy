@@ -28,15 +28,15 @@ void call() {
 
         def salida = sh(
             returnStdout: true,
-            script: """
-                ssh -o StrictHostKeyChecking=no ${user}@${host} \
-                    "sudo -n -u ${runAsUser} ls -1 '${ruta}'" \
+            script: """#!/bin/sh
+                ssh -o StrictHostKeyChecking=no ${user}@${host} \\
+                "sudo -n -u ${runAsUser} ls -1 '${ruta}'" \\
                 | while IFS= read -r f; do
-                    case "\$f" in
-                        ${patron}) echo "\$f" ;;
-                    esac
-                  done
-            """
+                case "\$f" in
+                ${patron}) echo "\$f" ;;
+                esac
+                done
+        """
         ).trim()
 
         return salida ? salida.readLines() : []
