@@ -5,7 +5,18 @@ void call() {
     def ruta      = config.ruta
     def faltantes = []
 
-    config.archivos.each { archivo ->
+    // Fecha del día anterior, calculada en el nodo con la zona horaria configurada
+    def fechaAyer = sh(
+        returnStdout: true,
+        script: "TZ='${config.zonaHoraria}' date -d 'yesterday' +'${config.formatoFecha}'"
+    ).trim()
+
+    echo "Fecha usada para buscar archivos (día anterior): ${fechaAyer}"
+
+    // Reemplaza el marcador en cada nombre
+    def archivos = config.archivos.collect { it.replace(config.marcador, fechaAyer) }
+
+    archivos.each { archivo ->
         def rc = sh(
             returnStatus: true,
             script: """
@@ -22,6 +33,6 @@ void call() {
     }
 
     if (faltantes) {
-        error "Faltan ${faltantes.size()} archivo(s) en ${host}:${ruta} -> ${faltantes.join(', ')}"
+        error "Faltan ${faltantes.size()} de ${archivos.size()} archivo(s) en ${host}:${ruta} para la fecha ${fechaAyer}:\n${faltantes.join('\n')}"
     }
 }
