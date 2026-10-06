@@ -30,13 +30,13 @@ void call() {
             returnStdout: true,
             script: """#!/bin/sh
                 ssh -o StrictHostKeyChecking=no ${user}@${host} \\
-                "sudo -n -u ${runAsUser} ls -1 '${ruta}'" \\
+                    "sudo -n -u ${runAsUser} ls -1 '${ruta}'" \\
                 | while IFS= read -r f; do
-                case "\$f" in
-                ${patron}) echo "\$f" ;;
-                esac
+                    case "\$f" in
+                        ${patron}) echo "\$f" ;;
+                    esac
                 done
-        """
+            """
         ).trim()
 
         return salida ? salida.readLines() : []
