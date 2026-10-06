@@ -3,10 +3,10 @@ fields {
         host           = String
         user           = String
         runAsUser      = String
-        ruta           = String
         formatoFecha   = String
         zonaHoraria    = String
         estadoSiFaltan = String
+        rutaGeneral    = String
         archivos       = List
     }
 }
