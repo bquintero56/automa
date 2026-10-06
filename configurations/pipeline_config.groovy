@@ -4,15 +4,14 @@ libraries {
         user         = 'svc_jenkins'
         runAsUser    = 'usr_datos'
         ruta         = '/data/entrada'
-        marcador     = 'XXXXXXX'            // texto que se reemplaza por la fecha
-        formatoFecha = '%Y%m%d'             // formato de `date`, ajústalo al de tus archivos
+        formatoFecha = '%Y%m%d'             // formato de la fecha en el nombre del archivo
         zonaHoraria  = 'America/Bogota'
         archivos     = [
-            'REPORTE_BIENVENIDAS_XXXXXXX.csv',
-            'ARCHIVO_DOS_XXXXXXX.csv',
-            'ARCHIVO_TRES_XXXXXXX.csv',
-            'ARCHIVO_CUATRO_XXXXXXX.csv',
-            'ARCHIVO_CINCO_XXXXXXX.csv'
+            'REPORTE_BIENVENIDAS_{fecha}.csv',
+            'ARCHIVO_DOS_{fecha}.csv',
+            'ARCHIVO_TRES_{fecha}.csv',
+            'ARCHIVO_CUATRO_{fecha}.csv',
+            'ARCHIVO_CINCO_{fecha}.csv'
         ]
     }
 }
