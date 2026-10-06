@@ -1,18 +1,40 @@
 libraries {
     validacion_archivos {
-        host         = '10.20.30.40'
-        user         = 'svc_jenkins'
-        runAsUser    = 'usr_datos'
-        ruta         = '/data/entrada'
-        formatoFecha = '%Y%m%d'             // formato de la fecha en el nombre del archivo
-        zonaHoraria  = 'America/Bogota'
-        estadoSiFaltan = 'SUCCESS'      // SUCCESS (verde), UNSTABLE (amarillo) o FAILURE (rojo)
-        archivos     = [
-            'REPORTE_BIENVENIDAS_{fecha}.csv',
-            'ARCHIVO_DOS_{fecha}.csv',
-            'ARCHIVO_TRES_{fecha}.csv',
-            'ARCHIVO_CUATRO_{fecha}.csv',
-            'ARCHIVO_CINCO_{fecha}.csv'
+        host           = '10.20.30.40'
+        user           = 'svc_jenkins'
+        runAsUser      = 'usr_datos'
+        formatoFecha   = '%Y%m%d'
+        zonaHoraria    = 'America/Bogota'
+        estadoSiFaltan = 'SUCCESS'          // SUCCESS, UNSTABLE o FAILURE
+
+        rutaGeneral    = '/data/entrada'    // donde deben estar los 5 archivos
+
+        archivos = [
+            [
+                nombre:           'REPORTE_{fecha}.csv',                // en la ruta general (exacto)
+                rutaEspecifica:   '/PROYECTO/Report/HOLA/Procesando',
+                patronEspecifico: 'REPORTE_{fecha}_*.csv'               // en su ruta (con comodín)
+            ],
+            [
+                nombre:           'ARCHIVO_DOS_{fecha}.csv',
+                rutaEspecifica:   '/PROYECTO/Report/RUTA2',
+                patronEspecifico: 'ARCHIVO_DOS_{fecha}_*.csv'
+            ],
+            [
+                nombre:           'ARCHIVO_TRES_{fecha}.csv',
+                rutaEspecifica:   '/PROYECTO/Report/RUTA3',
+                patronEspecifico: 'ARCHIVO_TRES_{fecha}_*.csv'
+            ],
+            [
+                nombre:           'ARCHIVO_CUATRO_{fecha}.csv',
+                rutaEspecifica:   '/PROYECTO/Report/RUTA4',
+                patronEspecifico: 'ARCHIVO_CUATRO_{fecha}_*.csv'
+            ],
+            [
+                nombre:           'ARCHIVO_CINCO_{fecha}.csv',
+                rutaEspecifica:   '/PROYECTO/Report/RUTA5',
+                patronEspecifico: 'ARCHIVO_CINCO_{fecha}_*.csv'
+            ]
         ]
     }
 }
