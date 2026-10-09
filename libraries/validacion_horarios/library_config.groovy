@@ -8,6 +8,7 @@ fields {
         rutaBase       = String
         formatoMes     = String
         formatoFecha   = String
+        prefijoNombre  = String
         diasAtras      = Integer
         ventanaMinutos = Integer
         archivos       = List

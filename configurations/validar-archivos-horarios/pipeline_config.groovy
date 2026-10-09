@@ -17,6 +17,8 @@ libraries {
         // Tolerancia: el job puede arrancar hasta N minutos después de la hora
         ventanaMinutos = 20
 
+        prefijoNombre  = '*_'
+
         archivos = [
             [nombre: 'DEVOLUCION_{fecha}.csv', hora: '15:00'],
             [nombre: 'CONTADOR_{fecha}.csv',   hora: '10:00'],
@@ -30,7 +32,21 @@ libraries {
             [nombre: 'ARCHIVO_10_{fecha}.csv', hora: '18:00']
             // Opcional por archivo: ruta: '/OTRA/RUTA/{mes}' para sobrescribir rutaBase
         ]
+            
+            
+            sinAprobado {
+            hora             = '15:00'
+            textoFijo        = '_SIN_APROBADO_'
+            formatoFechaCsv  = '%Y-%m-%d'       // 2026-10-08
+            formatoFechaPdf  = '%Y%m%d'         // 20261008
+            separador        = ';'              // separador del CSV (',' o ';')
+            columnaTipo      = 'TIPO_LIQUIDADOR'
+            valorExcluir     = 'Liquidador externo'
+            columnaSiniestro = 'NUMERO_SINIESTRO'
+        }
     }
+
+
 
     notificacion_correo {
         destinatarios    = 'persona1@empresa.com,persona2@empresa.com'
