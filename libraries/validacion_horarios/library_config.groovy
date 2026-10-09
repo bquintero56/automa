@@ -13,4 +13,14 @@ fields {
         ventanaMinutos = Integer
         archivos       = List
     }
+    sinAprobado {
+        hora             = String
+        textoFijo        = String
+        formatoFechaCsv  = String
+        formatoFechaPdf  = String
+        separador        = String
+        columnaTipo      = String
+        valorExcluir     = String
+        columnaSiniestro = String
+    }    
 }
