@@ -5,16 +5,17 @@ Map call(String modo = '') {
     def runAsUser = config.runAsUser
 
     // Fechas, mes y hora actual (día de ejecución)
-    def datos = sh(
-        returnStdout: true,
-        script: """#!/bin/sh
+// Ahora: fecha, mes y hora actual (la fecha respeta diasAtras)
+def datos = sh(
+    returnStdout: true,
+    script: """#!/bin/sh
 export TZ='${config.zonaHoraria}'
-date +'${c.formatoFechaCsv}'
-date +'${c.formatoFechaPdf}'
-date +'${config.formatoMes}'
+date -d '${config.diasAtras} days ago' +'${c.formatoFechaCsv}'
+date -d '${config.diasAtras} days ago' +'${c.formatoFechaPdf}'
+date -d '${config.diasAtras} days ago' +'${config.formatoMes}'
 date +'%H:%M'
 """
-    ).trim().readLines()
+).trim().readLines()
 
     def fechaCsv   = datos[0]
     def fechaPdf   = datos[1]
